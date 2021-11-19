@@ -124,7 +124,7 @@ python3 manage.py runserver
         'django.contrib.messages',
         'cloudinary_storage',
         'django.contrib.staticfiles',
-        'cloudinary'
+        'cloudinary',
         'blog',
     ]
     ```
@@ -203,3 +203,23 @@ In the directory on the same level as ```manage.py``` create Procfile
 ```
 web: gunicorn app_name_here.wsgi
 ```
+
+# Create the models
+
+1. Create a module in ```modules.py```
+1. When created, check they are ready 
+    ```
+    python3 manage.py makemigrations --dry-run
+    ```
+1. Make the migrations
+    ```
+    python3 manage.py makemigrations
+    ```
+1. Migrate the modules
+    ```
+    python3 manage.py migrate
+    ```
+1. Show a list of the migrations and check that they are marked as [X]
+    ```
+    python3 manage.py showmigrations
+    ```
