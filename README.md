@@ -108,7 +108,7 @@ python3 manage.py runserver
 1. Copy the API Environment Variable
 1. Navigate to the ```env.py``` file
     ```py
-    os.environ['CLOUDINARY_URL'] = "API Environment Variable Goes Here and Remove CLOUDINARY_URL from the begining"
+    os.environ['CLOUDINARY_URL'] = "API Environment Variable Goes Here and Remove CLOUDINARY_URL= from the begining"
     ```
 1. Copy the Cloudinary URL string and navigate to the config vars in the Heroku app
     * KEY = CLOUDINARY_URL
