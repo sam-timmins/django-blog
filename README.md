@@ -15,10 +15,13 @@ pip3 install dj_database_url psycopg2
 pip3 install dj3-cloudinary-storage
 ```
 
-4. Create the requirements.txt file
+### Any libraries installed need to be added to the requirements.txt file
+
+4. Create/ Update the requirements.txt file
 ```
-pip3 -freeze --local > requirements.txt
+pip3 freeze --local > requirements.txt
 ```
+
 
 5. Create the Django project
 ```
@@ -125,6 +128,7 @@ python3 manage.py runserver
         'cloudinary_storage',
         'django.contrib.staticfiles',
         'cloudinary',
+        'django_summernote',
         'blog',
     ]
     ```
@@ -223,3 +227,28 @@ web: gunicorn app_name_here.wsgi
     ```
     python3 manage.py showmigrations
     ```
+
+# Superuser
+
+1. Create a superuser
+```
+python3 manage.py createsuperuser
+```
+
+1. Enter a username, password and re-enter password
+
+1. To login as the superuser, launch the project again.
+```
+python3 manage.py runserver
+```
+1. Add '/admin' to the end of the URL and then login using the details just created.
+
+1. To access the modules earlier created, import them into ```admin.py```
+    ```py
+    from .models import MODULE_NAME
+
+
+    admin.site.register(MODULE_NAME)
+    ```
+1. Go back to the Admin page in the browser and hard refresh.
+1.

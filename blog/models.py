@@ -21,15 +21,12 @@ class Post(models.Model):
     likes = models.ManyToManyField(
         User, related_name='blogpost_like', blank=True)
 
-# Order the posts on the date they were created, the minus is order in decending order
     class Meta:
         ordering = ["-created_on"]
 
-# The default can cause issues, so this needs to be defined
     def __str__(self):
         return self.title
 
-# Helper method to return the number of likes on a post
     def number_of_likes(self):
         return self.likes.count()
 
