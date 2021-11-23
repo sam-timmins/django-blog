@@ -104,6 +104,10 @@ python3 manage.py runserver
         'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
     }
     ```
+1. Migrate databases again
+```
+python3 manage.py migrate
+```
 
 ## Link to Cloudinary
 
@@ -114,6 +118,10 @@ python3 manage.py runserver
     os.environ['CLOUDINARY_URL'] = "API Environment Variable Goes Here and Remove CLOUDINARY_URL= from the begining"
     ```
 1. Copy the Cloudinary URL string and navigate to the config vars in the Heroku app
+    * KEY = DISABLE_COLLECTSTATIC
+    * VALUE = 1
+
+1. For development add 
     * KEY = CLOUDINARY_URL
     * VALUE = The string from the ```env.py``` file
 
