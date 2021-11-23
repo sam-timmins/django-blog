@@ -259,4 +259,46 @@ python3 manage.py runserver
     admin.site.register(MODULE_NAME)
     ```
 1. Go back to the Admin page in the browser and hard refresh.
-1.
+
+
+Create Views
+
+1. In ```views.py``` within the app
+
+```py
+from django.views import generic
+from .models import Machine #THE CLASS NAME
+
+
+class MachineList(generic.ListView):
+    model = Machine
+    # the contents of the Machine table, filtered by it's working status and in alphebetical order
+    queryset = Machine.objects.filter(status=0).order_by(name)
+    template_name = 'index.html'
+    # max number of machines appearing on the page
+    paginate_by = 6
+```
+
+1. Create the template html files in the templates folder
+
+1. Create a file in the app dierctory called ```urls.py```
+
+1. 
+    ```py
+    from . import views
+    from django.urls import path
+
+
+    urlpatterns = [
+        # This is the default or homepage
+        path("", views.PostList.as_view(), name="home"),
+        # This creates ...
+        path('<slug:slug>/', views.PostDetail.as_view(), name='post_detail'),
+        path('like/<slug:slug>/', views.PostLike.as_view(), name='post_like'),
+    ]
+    ```
+1. Import the app's urls into the main directory ```urls.py```
+
+```py
+path("", include("booking.urls"), name="booking_urls"),
+```
