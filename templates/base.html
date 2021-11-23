@@ -57,6 +57,19 @@
         </div>
     </nav>
 
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 offset-md-2">
+                {% for message in messages %}
+                <div class="toast {{ message.tags }} alert-dismissible fade show position-absolute top-5 end-0 me-3 p-3" id="msg" role="alert" aria-live="polite" aria-atomic="true">
+                    {{ message | safe }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
     <main class="flex-shrink-0 main-bg">
         {% block content %}
         <!-- Content Goes here -->
@@ -71,6 +84,13 @@
             <i class="fab fa-instagram-square ms-3"></i>
             <i class="fab fa-youtube-square ms-3"></i></p>
     </footer>
+    <script>
+        setTimeout(function () {
+            let messages = document.getElementById('msg');
+            let alert = new bootstrap.Alert(messages);
+            alert.close();
+        }, 2500);
+    </script>
 </body>
 
 </html>
