@@ -2,7 +2,7 @@
 
 1. Install django and gnuicorn
 ```
-pip3 install django gunicorn
+pip3 install django==3.2 gunicorn
 ```
 
 2. Install PostgreSQL and psycopg2
