@@ -302,3 +302,52 @@ class MachineList(generic.ListView):
 ```py
 path("", include("booking.urls"), name="booking_urls"),
 ```
+
+
+
+# Allauth
+
+```
+pip3 install django-allauth
+```
+
+```
+pip3 freeze --local > requirements.txt
+```
+
+Add allauth urls to main url directory
+```py
+    path('accounts/', include('allauth.urls')),
+```
+
+In settings.py file
+```py
+
+INSTALLED_APPS:
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+
+# Number of sites for using the one database
+SITE_ID = 1
+
+# Redirection URLs
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'
+ACCOUNT_SIGNUP_REDIRECT_URL = ''
+```
+
+```
+python3 manage.py migrate
+```
+
+## To show the allauth templates
+Find out the version of python you are using in the terminal
+```
+ls ../.pip-modules/lib
+```
+```
+cp -r ../.pip-modules/lib/python3.8/site-packages/allauth/templates/* ./templates
+```
